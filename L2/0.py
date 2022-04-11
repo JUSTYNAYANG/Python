@@ -1,13 +1,10 @@
 from pycat.core import Window
-from regex import E
 
 window = Window()
 
 e = window.create_sprite()
 
 e.image = 'elephant.png'
-e.x = 200
-e.y = 200
 
 e.goto_random_position()
 

@@ -11,8 +11,7 @@ chosen_animal.x = positionx
 
 if animal == "elephant":
     chosen_animal.image = 'elephant.png'
-
-if animal == "tiger":
+elif animal == "tiger":
     chosen_animal.image = "tiger.png"
     
 
