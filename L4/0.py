@@ -5,8 +5,9 @@ window = Window()
 class Owl(Sprite):
     def on_create(self):
         self.image = "img/owl.png"
-        self.x = self.width
+        self.x = self.width/2
         self.y = window.height/2
+        self.scale = 0.5
         self.health = 100
     
     def on_update(self,dt):
@@ -25,11 +26,13 @@ class Owl(Sprite):
             print(self.health)
             if self.health <= 0:
                 window.close()
+                print("owl is dead ;n;")
 
 
 class Beach(Sprite):
     def on_create(self):
         self.image = "img/beach.png"
+        self.scale = 0.5
         self.add_tag("b")
 
 b1 = window.create_sprite(Beach)
@@ -38,11 +41,25 @@ b1.width = 640
 b1.y = b1.height/2
 b1.x = b1.width/2
 
+
 b2 = window.create_sprite(Beach)
 b2.height /= 2
 b2.width = 420
 b2.y = b2.height/2
 b2.x = window.width - b2.width/2
+
+b3 = window.create_sprite(Beach)
+b3.height = 400
+b3.width = 50
+b3.y = window.height - b3.height/2
+b3.x = 150
+
+b4 = window.create_sprite(Beach)
+b4.height = 400
+b4.width = 50
+b4.y = b4.height/2 + b1.height
+b4.x = 300
+
 
 window.create_sprite(Owl)
         
