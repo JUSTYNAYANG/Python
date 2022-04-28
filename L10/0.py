@@ -14,19 +14,16 @@ DINO = 7
 class Blob(Sprite):
     def on_create(self):
         self.x = window.width*3/4
-        self.y = 350
+        self.y = 310
         self.image = "img/ghost-a.png"
         self.state = UP
         self.extra = 8
         self.t = 0
-        # self.t2 = 0
         self.ud = 0
-        # self.d = 0
         self.rotation_mode = RotationMode.RIGHT_LEFT
         self.rotation = 90
     def on_update(self, dt):
         self.t += dt
-        # self.t2 += dt
         if self.state == UP:
             self.blobup()
         elif self.state == DOWN:
@@ -44,42 +41,38 @@ class Blob(Sprite):
     
     def blobup(self):
         self.image = "img/ghost-a.png"
-        self.move_forward(2.5)
+        self.move_forward(3)
         self.rotation = 90
-        if self.y > 350:
+        if self.y > 310:
             self.state = DOWN
     def blobdown(self):
-        self.move_forward(2.5)
+        self.move_forward(2)
         self.rotation = -90
-        if self.ud < 4:
-            if self.y < 250:
+        if self.ud < 3:
+            if self.y < 260:
                 self.ud += 1
-                # self.d += 1
                 self.state = UP
         else:
             self.t = 0
             self.state = DINO 
-        # if self.d == 4:
-        #     self.t2 = 0
-        #     self.extra = DINO
     def dino(self):
         window.create_sprite(Dino)
         self.state = NOTICE
     def blobnotice(self):
         self.image = "img/ghost-b.png"
         self.ud = 0
-        if self.t > 2:
+        if self.t > 1:
             self.t = 0
             self.state = SCARED
     def blobscared(self):
         self.image = "img/ghost-c.png"
-        if self.t > 2:
+        if self.t > 1:
             self.t = 0
             self.state = RUN1
     def blobrun1(self):
         self.image = "img/ghost-d.png"
         self.rotation = 0
-        self.move_forward(2)
+        self.move_forward(8)
         if self.is_touching_window_edge():
             self.is_visible = False
             self.x -= window.width
@@ -87,7 +80,7 @@ class Blob(Sprite):
     def blobrun2(self):
         self.is_visible = True
         if self.x < window.width*2/3:
-             self.x += 2
+            self.move_forward(8)
         else:
             self.state = UP
     
@@ -98,9 +91,8 @@ class Dino(Sprite):
         self.y = window.height/2
         self.image = "img/dinosaur4-d.png" 
     def on_update(self, dt):
-        if blob.t >= 2:
+        if blob.is_visible == False:
             self.delete()
-# should make self . time follow blob.t
 
 
 blob = window.create_sprite(Blob)
