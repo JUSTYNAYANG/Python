@@ -8,6 +8,7 @@ class WaitApe(Sprite):
         self.x = window.width/2
         self.y = window.height/3
         self.scale = 7
+        self.layer = 1
         self.wait()
         # Scheduler.wait(5,self.angry)
     def wait(self):

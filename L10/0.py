@@ -1,4 +1,3 @@
-from numpy import dtype
 from pycat.core import Window, Sprite, RotationMode
 
 window = Window()
@@ -9,24 +8,25 @@ SCARED = 4
 RUN1 = 5
 RUN2 = 6
 DINO = 7
-NO = 8
 
 
 
 class Blob(Sprite):
     def on_create(self):
         self.x = window.width*3/4
-        self.y = window.height/2.5
+        self.y = 350
         self.image = "img/ghost-a.png"
         self.state = UP
-        # self.extra = 
+        self.extra = 8
         self.t = 0
+        # self.t2 = 0
         self.ud = 0
-        self.d = 0
+        # self.d = 0
         self.rotation_mode = RotationMode.RIGHT_LEFT
         self.rotation = 90
     def on_update(self, dt):
         self.t += dt
+        # self.t2 += dt
         if self.state == UP:
             self.blobup()
         elif self.state == DOWN:
@@ -39,8 +39,9 @@ class Blob(Sprite):
             self.blobrun1()
         elif self.state == RUN2:
             self.blobrun2()
-        # if self.extra == DINO:
-        #     self.dino()
+        if self.state == DINO:
+             self.dino()
+    
     def blobup(self):
         self.image = "img/ghost-a.png"
         self.move_forward(2.5)
@@ -53,15 +54,17 @@ class Blob(Sprite):
         if self.ud < 4:
             if self.y < 250:
                 self.ud += 1
-                self.d += 1
+                # self.d += 1
                 self.state = UP
         else:
             self.t = 0
-            self.state = NOTICE 
-        # if self.d == 3:
-        #      self.state = DINO
-    # def dino(self):
-    #     window.create_sprite(Dino)
+            self.state = DINO 
+        # if self.d == 4:
+        #     self.t2 = 0
+        #     self.extra = DINO
+    def dino(self):
+        window.create_sprite(Dino)
+        self.state = NOTICE
     def blobnotice(self):
         self.image = "img/ghost-b.png"
         self.ud = 0
@@ -94,9 +97,11 @@ class Dino(Sprite):
         self.x = window.width/3
         self.y = window.height/2
         self.image = "img/dinosaur4-d.png" 
+    def on_update(self, dt):
+        if blob.t >= 2:
+            self.delete()
+# should make self . time follow blob.t
 
 
-
-
-window.create_sprite(Blob)
+blob = window.create_sprite(Blob)
 window.run()
