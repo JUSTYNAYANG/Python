@@ -35,6 +35,11 @@ class Beach(Sprite):
         self.scale = 0.5
         self.add_tag("b")
 
+# class Ork(Sprite):
+#     def on_create(self):
+#         self.image = "img/ork.png"
+#     def on_update(self,dt):
+#         self.move_forward(1)
 
 b1 = window.create_sprite(Beach)
 b1.height /= 2
@@ -69,6 +74,6 @@ b5.x = 450
 
 
 window.create_sprite(Owl)
-
+window.create_sprite(Ork)
         
 window.run()
