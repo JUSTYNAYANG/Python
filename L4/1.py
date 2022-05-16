@@ -37,8 +37,9 @@ class Beach(Sprite):
 
 # class Ork(Sprite):
 #     def on_create(self):
-#         self.image = "img/ork.png"
+#         self.image = "img/ork1.png"
 #     def on_update(self,dt):
+#         self.point_toward(Owl.position)
 #         self.move_forward(1)
 
 b1 = window.create_sprite(Beach)
@@ -74,6 +75,6 @@ b5.x = 450
 
 
 window.create_sprite(Owl)
-window.create_sprite(Ork)
+# window.create_sprite(Ork)
         
 window.run()
