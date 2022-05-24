@@ -10,6 +10,7 @@ class Score(Label):
         self.score = 0
     def on_update(self, dt):
         self.text = str(self.score)
+# haven't add score every time enemy killed
 
 class Player(Sprite):
 
