@@ -16,6 +16,7 @@ class Particle(Sprite):
             self.rotation += 180
             
 
+
 for i in range(100):
     w.create_sprite(Particle)
 

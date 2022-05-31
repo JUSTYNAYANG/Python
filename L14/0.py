@@ -83,6 +83,7 @@ class Enemy(Sprite):
                 self.opacity -= 30
             else:
                 self.delete()
+                score.score += 1
         if self.is_touching_window_edge():
             if self.t <= 2:
                 self.t += dt

@@ -1,4 +1,4 @@
-from pycat.core import Window, Sprite
+from pycat.core import Window, Sprite, Color
 from random import Random, randint
 
 w = Window()
@@ -8,6 +8,7 @@ class Particle1(Sprite):
         self.scale = 5
         self.time = 0
         self.speed = 2
+        # self.color = C
     def on_update(self, dt):
         self.speed *= 0.99
         self.time += dt
