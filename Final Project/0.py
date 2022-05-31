@@ -1,6 +1,13 @@
 from pycat.core import Window, Sprite, KeyCode
 window = Window()
 
+# bush width 112.2
+# bush height 85.2
+# window width 1280
+# window height 640
+# window width / bush width (around how many bush can fit horizontally) 11.408199643493761
+# window height / bush height (around how many bush can fit vertically)7.511737089201878
+
 class Duck(Sprite):
     def on_create(self):
         self.image_list = ["img/duck 1.png", "img/duck 2.png", "img/duck 3.png", "img/duck 4.png", "img/Tree1.png"]
@@ -31,12 +38,6 @@ class Bush(Sprite):
         self.scale = 0.6
         self.x = 300
         self.y = 300
-        print(self.width)
-        print(self.height)
-        print(window.height)
-        print(window.width)
-        print(window.width/self.width)
-        print(window.height/self.height)
 
 
 
