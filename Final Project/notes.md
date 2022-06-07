@@ -20,3 +20,10 @@ duck - different movement different image
 - create the images
 - make different stages for the duck for different directions
 - allow the duck to move
+
+to do 6/7
+- finish maze
+to do for next week
+- monster
+- hearts
+- attack
