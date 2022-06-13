@@ -66,6 +66,7 @@ class DotTheEvil(Sprite):
         self.layer = 2
         self.t = 0
         self.it = 0
+        self.dotattacktime = 0
         self.index = 0
         self.len = len(dotimage)
         self.rotation = 0 
@@ -74,6 +75,7 @@ class DotTheEvil(Sprite):
         self.move_forward(1)
         self.t += dt
         self.it += dt 
+        self.dotattacktime += dt
         if self.t > 2:
             self.rotation += randint(0,90)
             self.t = 0
@@ -81,13 +83,19 @@ class DotTheEvil(Sprite):
             self.index += 1
             self.image = dotimage[self.index % self.len]
             self.it = 0
+        if self.dotattacktime > 1:
+            attack = window.create_sprite(DotAttack)
+            attack.position = self.position
+            attack.point_toward_sprite(duck)
+            self.dotattacktime = 0 
 
 
 class DotAttack(Sprite):
     def on_create(self):
         self.speed = 2
-        self.scale = 20
+        self.scale = 10
         self.color = Color.AMBER
+        self.layer = 2
     def on_update(self, dt):
         self.move_forward(self.speed)
         
@@ -127,7 +135,6 @@ def level_1():
 
 duck = window.create_sprite(Duck)
 window.create_sprite(DotTheEvil)
-window.create_sprite(DotAttack)
 
 level_1()
 
