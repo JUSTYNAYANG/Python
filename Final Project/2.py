@@ -175,6 +175,7 @@ class DuckAttack(Sprite):
         self.add_tag("duckattack")
         self.position = duck.position
         self.point_toward_mouse_cursor()
+        
     def on_update(self, dt):
         self.move_forward(self.speed)
         if self.is_touching_window_edge():
