@@ -7,7 +7,9 @@ window = Window()
 
 # generate_level(window, "Final Project/maze.py")
 dotimage = ["img/dot-b.png", "img/dot-c.png"]
-
+portal_in_x = [56.5]
+portal_in_y = [58.5]
+level = 0
 class Score(Label):
     def on_create(self):
         self.text = "100"
@@ -29,6 +31,7 @@ class Score(Label):
             self.t += dt
             if self.t >= 10:
                 window.close()
+
 
 class Duck(Sprite):
     def on_create(self):
@@ -74,8 +77,8 @@ class Portal_IN(Sprite):
         self.image = "img/portal.png"
         self.scale = 0.3
         self.add_tag("in")
-        self.x = 56.5
-        self.y = 58.5
+        self.x = portal_in_x[level]
+        self.y = portal_in_y[level]
 
 class Water(Sprite):
     def on_create(self):
